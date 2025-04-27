@@ -1,1 +1,2 @@
-### 구글 드라이브 : https://drive.google.com/drive/folders/1tiCj2DSPxwDJWuz_80Tgyqltp_C8N8Da?usp=sharing
+### 리뷰 자료 구글 드라이브 
+https://drive.google.com/drive/folders/1lmUUCgOmnJ48naCXaqo-chBkbY6LYzA6?usp=sharing
