@@ -5,11 +5,12 @@
 
 # MariaDB 연동
 <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
+```
 <dependency>
     <groupId>org.mariadb.jdbc</groupId>
     <artifactId>mariadb-java-client</artifactId>
 </dependency>
-
+```
 
 spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
 spring.datasource.url=jdbc:mariadb://localhost:3306/bootdb
