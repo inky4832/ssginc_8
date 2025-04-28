@@ -11,8 +11,9 @@
     <artifactId>mariadb-java-client</artifactId>
 </dependency>
 ```
-
+<pre>
 spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
 spring.datasource.url=jdbc:mariadb://localhost:3306/bootdb
 spring.datasource.username=bootdbuser
 spring.datasource.password=bootdbuser
+</pre>
