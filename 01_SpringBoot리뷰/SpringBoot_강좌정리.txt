@@ -1065,20 +1065,28 @@ https://docs.spring.io/spring-boot/docs/3.2.12/reference/html/howto.html#howto.d
  ///////////////////////////////////////////
 
                                                              @RestController
-   웹브라우저 ---------------------> 서블릿(자동으로제공)                @Controller
-                                DispatcherServlet ---------> Controller
+   웹브라우저 --     -------------> 서블릿(자동으로제공)                @Controller
+                                DispatcherServlet ---------> Controller                   -->Service-->Repository-->DB
 				서블릿맵핑: /			//요청맵핑값(request mapppong)
 							     @GetMapping("/signup")
 						              public void signup(){}
 							     @GetMapping("/login")
 							      public void login(){}
 							      ...
+						 
+						   <--------
+						     데이터 ( 뷰에서 보여줄 데이터: 모델 )
+						     와
+					 	     뷰(JSP|Thymeleaf,..)
+
+	<----------------------    JSP
 
    요청URL(NEW): http://localhost:8080/컨텍스트명/서블릿맵핑/요청맵핑값
                http://localhost:8080/컨텍스트명/
 
      예>
           http://localhost:8080/컨텍스트명/signup
+	  http://localhost:8080/컨텍스트명/login
 
  //////////////////////////////////////////////
 
@@ -1434,6 +1442,13 @@ https://docs.spring.io/spring-boot/docs/3.2.12/reference/html/web.html#web.servl
 		}	
 
 
+/////////////////////////////////////////////////////////////////
+
+   Controller의 메서드가 String 리턴하면,
+   이 String 는 뷰정보(jsp|thymeleaf)가 된다.
+
+
+/////////////////////////////////////////////////////////////////
 21. Controller에서 JSP에서 보여줄 데이터 저장 ( 모델 관리 )
 
         1) 이전 서블릿 처리
