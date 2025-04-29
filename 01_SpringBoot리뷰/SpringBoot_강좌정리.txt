@@ -1063,7 +1063,7 @@ https://docs.spring.io/spring-boot/docs/3.2.12/reference/html/howto.html#howto.d
 
 
  ///////////////////////////////////////////
-
+  * Sping MVC 아키텍쳐
                                                              @RestController
    웹브라우저 --     -------------> 서블릿(자동으로제공)                @Controller
                                 DispatcherServlet ---------> Controller                   -->Service-->Repository-->DB
@@ -1087,6 +1087,23 @@ https://docs.spring.io/spring-boot/docs/3.2.12/reference/html/howto.html#howto.d
      예>
           http://localhost:8080/컨텍스트명/signup
 	  http://localhost:8080/컨텍스트명/login
+
+  
+  * 사용자 입력 폼 데이터가 서버에 전달되는 포맷
+
+    GET 방식:   URL에 query string( name=value&name=value ) 형식으로 전달됨.
+       
+            예> http://localhost:8090/app/login?userid=aaa&passwd=1234
+
+    POST 방식:  URL 이용하지 body 에 포함되어 전달됨.
+
+            예> http://localhost:8090/app/login
+
+             body: userid=aaa&passwd=1234
+
+	     멱등이 지원안되기 때문에 post로 요청하고 새로고침하면 명시적으로 재요청했는지를 경고창으로 물어봄.
+
+
 
  //////////////////////////////////////////////
 
@@ -1470,6 +1487,65 @@ https://docs.spring.io/spring-boot/docs/3.2.12/reference/html/web.html#web.servl
 	 2) Spring Controller  처리
 	    - JSP에서 보여주는 데이터를 model 이라고 부름.
 	    - scope에 저장함.
+
+ ///////////////////////////////////////////////////
+   * 자바의 3가지 변수
+     1) 로컬변수: 
+          생성~소멸: 메서드가 호출생성~ 메서드가 끝나면 제거됨.
+	          임시적으로 사용되는 변수
+          메모리: stack
+	  특징: 반드시 명시적으로 초기화
+
+     2) 인스턴스 변수(멤버 변수)
+         생성~소멸: 객체생성(new) ~ 객체소멸되면 제거됨.
+         메모리: heap
+          특징: 자동초기화
+
+     3) static 변수(클래스 변수)
+         생성~소멸: 프로그램시작 ~ 프로그램 종료
+         메모리: method area
+           특징: 자동초기화
+     예>
+        public class Test{
+
+	         int x;  // 인스턴스 변수(멤버 변수)
+	 static int x2;  // static 변수(클래스 변수)
+	  
+	    public void method(int n){ // 로컬변수
+		 
+		 int x3;  // 로컬변수
+		 s.o.p(x3); //에러발생
+	    }
+
+	}
+	main(){
+        	Test t = new Test(); // 인스턴스 변수가 생성됨
+		//t= null;
+		료// = new Test();
+		t.method();
+        }
+  
+
+   * 자바의 웹어플리케이션의 4가지 scope( 모델이 저장할때 적용되는 lifecycle 의미 )
+    1) page scope
+    2) request scope (기본)
+        범위:  요청~응답
+                        요청
+	     웹브라우저 -----------------> Controller
+	            <------------
+		        응답
+	클래스: HttpServletRequest
+
+    3) session scope
+        범위: 웹브라우저와 동일한 lifecycle 가짐
+        클래스: HttpSession
+
+    4) application scope
+         범위: tomcat 서버와 동일한 lifecycle 가짐
+        클래스: ServletContext
+
+//////////////////////////////////////////////////////
+
 
          가. request scope에 모델 저장하는 방법
 
