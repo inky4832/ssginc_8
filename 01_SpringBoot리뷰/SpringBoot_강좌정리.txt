@@ -1770,11 +1770,91 @@ https://docs.spring.io/spring-boot/docs/3.2.12/reference/html/web.html#web.servl
     웹브랑우저       --------------------------------> Controller
     (React.js)   <-------------------------------
                            JSON
+ 
+  ////////////////////////////////////////////////////////
+    @Controller
+      public class TestController {
+     
+	@GetMapping("/main") 
+        public @ResponseBody LoginDTO login() {
+		
+		return new LoginDTO("홍길동", "1234");
+	}
+       @GetMapping("/main2")  
+      public @ResponseBody ArrayList<LoginDTO> login2() {
 
 
+  ==> 
+
+      @RestController   ( @Controller + @ResponseBody )
+      public class TestController {
+     
+	@GetMapping("/main") 
+        public  LoginDTO login() {
+		
+		return new LoginDTO("홍길동", "1234");
+	}
+       @GetMapping("/main2")  
+      public y ArrayList<LoginDTO> login2() {
+  ///////////////////////////////////////////////////////
 
 24. redirect 와 forward
 
+   ///////////////////////////////
+	                                      @Controller
+     웹브라우저 -------> DispatcherServlet -----> Controller
+                                       <----
+				       모델
+				       뷰
+
+	                 |
+			 |    <== 리다이렉트 | 포워드
+			 |
+			jsp(뷰)
+
+
+      가. 리다이렉트(redirect)
+       
+            웹브라우저 -------> DispatcherServlet
+					|
+					|  서블릿: response.sendRedirect(" list.jsp");
+	                                   spring: return "redirect:타겟";
+				      list.jsp
+
+          동작방식
+                  request생성(100번지)
+           웹브라우저 -------> Servlet (/xxx ) request.setAttribute("a",124);
+		  <------			  
+	
+	        request생성(200번지)
+		 ------->  list.jsp    request.getAttribute("a"); // null
+                 <------
+
+       특징: URL이 변경됨( /xxx ==> list.jsp )
+           request scope에 저장된 데이터는 사용불가
+
+    
+     나. 포워드(forward)
+       
+            웹브라우저 -------> DispatcherServlet
+					|
+					|  서블릿: request.getRequestDispatcher("타겟").forward(request, response);
+	                                   spring: return "forward:타겟";
+				      list.jsp
+
+          동작방식
+                  request생성(100번지)
+           웹브라우저 -------> Servlet (/xxx ) request.setAttribute("a",124);
+		  	     |		  
+			     |
+	                     |
+		          list.jsp    request.getAttribute("a"); // 124 참조가능
+                 <------
+
+       특징: URL이 변경 안됨( /xxx )
+           request scope에 저장된 데이터는 사용가능
+
+   /////////////////////////////
    1) 이전 Servlet 코드
 
        public void doGet(HttpServletRequest request, HttpServletResponse response ){
