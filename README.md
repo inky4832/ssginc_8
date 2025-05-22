@@ -17,3 +17,7 @@ spring.datasource.url=jdbc:mariadb://localhost:3306/bootdb
 spring.datasource.username=bootdbuser
 spring.datasource.password=bootdbuser
 </pre>
+
+
+# KDT5차 7차 최종 프로젝트 소스
+https://drive.google.com/drive/folders/1TcW47Yo-jqzQCbtlB8hZEA27L_YiiK4Q?usp=sharing
