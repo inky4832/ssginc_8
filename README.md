@@ -21,3 +21,6 @@ spring.datasource.password=bootdbuser
 
 # KDT5차 7차 최종 프로젝트 소스
 https://drive.google.com/drive/folders/1TcW47Yo-jqzQCbtlB8hZEA27L_YiiK4Q?usp=sharing
+
+# KDT 중간발표 PT 샘플
+https://drive.google.com/drive/folders/1DVaWaLOujjlAD1wyVDAtsGZ-C8OU4aU0?usp=sharing
