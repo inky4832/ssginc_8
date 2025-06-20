@@ -24,3 +24,7 @@ https://drive.google.com/drive/folders/1TcW47Yo-jqzQCbtlB8hZEA27L_YiiK4Q?usp=sha
 
 # KDT 중간발표 PT 샘플
 https://drive.google.com/drive/folders/1DVaWaLOujjlAD1wyVDAtsGZ-C8OU4aU0?usp=sharing
+
+
+# Spring AI 실전 가이드: RAG 챗봇 만들기 - 무료강의
+https://www.inflearn.com/course/springai-%EA%B0%80%EC%9D%B4%EB%93%9C-rag%EC%B1%97%EB%B4%87-mcp%EC%97%B0%EB%8F%99
